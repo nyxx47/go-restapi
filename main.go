@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"os"
+	_"os"
 	"restapi/app"
 	"restapi/controllers"
-
+	"github.com/spf13/viper"
 	"github.com/gorilla/mux"
 )
 
@@ -21,14 +21,14 @@ func main() {
 
 	router.Use(app.JwtAuthentication)
 
-	port := os.Getenv("PORT")
+	port := viper.GetString(`server.address`)
 	if port == "" {
-		port = "8888"
+		port = viper.GetString(`server.address`)
 	}
 
 	fmt.Println(port)
 
-	err := http.ListenAndServe(":"+port, router)
+	err := http.ListenAndServe(port, router)
 	if err != nil {
 		fmt.Println(err)
 	}

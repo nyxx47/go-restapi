@@ -1,0 +1,13 @@
+{
+	"debug":true,
+	"server": {
+		"address": ":7777"
+	},
+	"database": {
+		"host":"localhost",
+		"port":"5432",
+		"user":"apino",
+		"pass":"12345678",
+		"name":"restapi"
+	}
+}
